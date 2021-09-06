@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image , FlatList, Alert} from 'react-native';
 import Header from './components/Header';
 import ListItem from './components/ListItem'
 import AddItem from './components/AddItem';
-// import { uuid } from 'uuidv4';
+
 
 const App = () => {
   const [items, setItems] = useState([
