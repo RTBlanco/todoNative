@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View, Text, StyleSheet, Image ,FlatList} from 'react-native';
+import { View, Text, StyleSheet, Image , FlatList, Alert} from 'react-native';
 import Header from './components/Header';
 import ListItem from './components/ListItem'
 import AddItem from './components/AddItem';
@@ -19,9 +19,20 @@ const App = () => {
     })
   }
 
+  const addItem = (text) => {
+    if (!text) {
+      Alert.alert('Error', 'Please enter an item', { text: 'ok'})
+    } else {
+      setItems(prev => {
+        return [{id: prev.length + 1, text}, ...prev]
+      })
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Header title={'Todo List'}/>
+      <AddItem addItem={addItem} />
       <FlatList data={items} renderItem={({item}) => <ListItem item={item} deleteItem={deleteItem} /> }/>
     </View>
   )
